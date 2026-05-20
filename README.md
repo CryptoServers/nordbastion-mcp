@@ -22,17 +22,19 @@ Agentic workflows increasingly need infrastructure on demand: a throwaway box to
 The server speaks MCP over **stdio**, so any MCP client launches it as a subprocess. The simplest path uses [`uv`](https://docs.astral.sh/uv/) (no manual virtualenv):
 
 ```bash
-# Run straight from this repository
-uvx --from git+https://github.com/CryptoServers/nordbastion-mcp nordbastion-mcp
+uvx nordbastion-mcp
 ```
 
 Or install it into your environment with pip / pipx:
 
 ```bash
-pip install git+https://github.com/CryptoServers/nordbastion-mcp
-# then the console script is on your PATH:
+pip install nordbastion-mcp
+# the console script is then on your PATH:
 nordbastion-mcp
 ```
+
+> Want the latest unreleased code? Install straight from source instead:
+> `uvx --from git+https://github.com/CryptoServers/nordbastion-mcp nordbastion-mcp`
 
 ### Configuration
 
@@ -52,7 +54,7 @@ Add to `claude_desktop_config.json` (see [`examples/`](examples/)):
   "mcpServers": {
     "nordbastion": {
       "command": "uvx",
-      "args": ["--from", "git+https://github.com/CryptoServers/nordbastion-mcp", "nordbastion-mcp"],
+      "args": ["nordbastion-mcp"],
       "env": { "NORDBASTION_API_KEY": "nb_live_xxxxxxxxxxxxxxxx" }
     }
   }
@@ -68,7 +70,7 @@ Add to `~/.cursor/mcp.json`:
   "mcpServers": {
     "nordbastion": {
       "command": "uvx",
-      "args": ["--from", "git+https://github.com/CryptoServers/nordbastion-mcp", "nordbastion-mcp"],
+      "args": ["nordbastion-mcp"],
       "env": { "NORDBASTION_API_KEY": "nb_live_xxxxxxxxxxxxxxxx" }
     }
   }
@@ -127,7 +129,7 @@ The registry in [`tools.py`](src/nordbastion_mcp/tools.py) mirrors NordBastion's
 ```bash
 git clone https://github.com/CryptoServers/nordbastion-mcp
 cd nordbastion-mcp
-uv venv && uv pip install -e ".[dev]" mcp httpx ruff
+uv venv && uv pip install -e . ruff
 python -m nordbastion_mcp   # starts the stdio server
 ruff check .
 ```
