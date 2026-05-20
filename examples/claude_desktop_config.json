@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "nordbastion": {
+      "command": "uvx",
+      "args": [
+        "--from",
+        "git+https://github.com/CryptoServers/nordbastion-mcp",
+        "nordbastion-mcp"
+      ],
+      "env": {
+        "NORDBASTION_API_KEY": "nb_live_xxxxxxxxxxxxxxxx"
+      }
+    }
+  }
+}
