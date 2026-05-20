@@ -16,7 +16,6 @@ import mcp.types as types
 from mcp.server import Server
 from mcp.server.stdio import stdio_server
 
-from ._version import __version__
 from .client import NordBastionClient, NordBastionError
 from .tools import RESOURCE_ENDPOINTS, RESOURCES, TOOLS, TOOLS_BY_NAME
 
